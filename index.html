@@ -179,6 +179,36 @@
             li.bad{
                 color: red;
             }
+            .pyramid {
+                display: flex;
+                flex-direction: column-reverse;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+            }
+            .pyramid > div {
+                border-left: 150px solid transparent;
+                border-right: 150px solid transparent;
+                height: 0;
+                line-height: 125px;
+                text-align: center;
+            }
+            #portal {
+                border-bottom: 125px solid #00529f;
+                width: 0;
+            }
+            #portal:before {
+                content: "Portal";
+                margin-left: -50px;
+            }
+            #meta {
+                border-bottom: 125px solid #6b89a0;
+                width: 300px;
+            }
+            #smp {
+                border-bottom: 125px solid #085896;
+                width: 600px;
+            }
         </style>
     </head>
 
@@ -194,16 +224,66 @@
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2></h2>
+                    <h2>Введение</h2>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Ликбез</h2>
+                    <h3>SMP&Portal</h3>
+                    <div class="pyramid">
+                        <div class="fragment" id="smp">SMP</div>
+                        <div class="fragment" id="meta">Metainformation</div>
+                        <div class="fragment" id="portal"></div>
+                    </div>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Portal</h2>
                     <ul>
                         <li></li>
                     </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Groovy</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Много объектов со сложными взаимосвязями - тебе нужен DSL</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Какая задача стояла?</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Как её можно решить без DSL?</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
                 </section>
                 <section class="pain">
                     <div class="dialog">
                         <div class="baloon left">Я изменил дамп</div>
                         <div class="baloon rigth">Я тоже</div>
                     </div>
+                </section>
+                <section>
+                    <h2>Как её решает DSL?</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
                 </section>
                 <section>
                     <h2>Требования к скрипту наполнения</h2>
@@ -218,7 +298,14 @@
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Рассматриваемые варианты</h2>
+                    <h2>DSL в Groovy можно и без магии</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Рассматриваемые варианты реализации</h2>
                     <ul>
                         <li>ObjectGraphBuilder</li>
                         <li>Реализация BuilderSupport</li>
@@ -250,7 +337,7 @@ class Employee extends Bo
                     </code></pre>
                     <aside class="notes"></aside>
                 </section>
-                                <section>
+                <section>
                     <h2>ObjectGraphBuilder</h2>
                     <pre style="width:auto;"><code data-trim class="groovy">
 def builder = new ObjectGraphBuilder()
@@ -376,73 +463,17 @@ class Bo
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Helicopter view</h2>
-                    <img src="img/helicopter_view.png">
+                    <h2>Базовые возможности Groovy, сокращаем количество кода</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Классы бизнес-объектов</h2>
-                    <pre style="width:auto;"><code data-trim class="groovy">
-@Fqn('news$news')
-class News extends Bo
-{
-    @File
-    @Attribute
-    String logoPrev
-    @Attribute
-    String textArticleRtf
-    @Attribute
-    Collection&lt;Service> _listServices
-    @Attribute
-    Collection&lt;Location> _locations
-    @Attribute
-    Collection&lt;Ou&gt; _ouProvNews
-    @Attribute
-    String state
-}
-                    </code></pre>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>Классы бизнес-объектов</h2>
-                    <pre style="width:auto;"><code data-trim class="groovy">
-@Fqn('location$postOffice')
-class Location extends Bo
-{
-    @Parent
-    @Attribute
-    Location parent
-}
-                    </code></pre>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>Классы бизнес-объектов</h2>
-                    <pre style="width:auto;"><code data-trim class="groovy">
-@Fqn('serviceCall$request')
-class ServiceCall extends Bo
-{
-    @Attribute
-    Employee client
-    @Attribute
-    Employee userName
-    @Attribute
-    Service slmService
-    @Attribute('seviceComp')
-    Component component
-    @Attribute
-    Route route
-    @Attribute('descriptionInRTF')
-    String description
-    @Deferred
-    @Attribute
-    String state
-    @Attribute('procCodeClose')
-    IncidentCloseCode closeCode
-    @Attribute
-    String solution
-}
-                    </code></pre>
+                    <h2>Аннотация @Builder</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -473,6 +504,20 @@ class NewsBuilder extends BoBuilder implements IHasMake&lt;News&gt;
                     <aside class="notes"></aside>
                 </section>
                 <section>
+                    <h2>Проблемы с наследованием</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Создание коллекций объектов</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
                     <h2>Классы строители коллекций</h2>
                     <pre style="width:auto;"><code data-trim class="groovy">
 @InheritConstructors
@@ -482,63 +527,58 @@ class NewsCollectionBuilder extends CollectionBuilder&gt;News, NewsBuilder&lt;
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Класс Stand</h2>
-                    <pre style="width:auto;"><code data-trim class="groovy">
-class Stand extends Bo
-{
-    static Stand build(@DelegatesTo(StandBuilder) Closure config)
-    {
-        def stand = new StandBuilder()
-        return create(stand, config)
-    }
-    Collection&lt;IncidentCloseCode> _incidentCloseCodes = []
-    Collection&lt;Ou> _ous = []
-    Collection&lt;Service> _services = []
-    Collection&lt;Category> _categories = []
-    Collection&lt;Location> _locations = []
-    Collection&lt;News> _news = []
-    Collection&lt;Poll> _polls = []
-    Collection&lt;Article> _articles = []
-    Collection&lt;ResponsibleRule> _responsibilityRules = []
-    Collection&lt;NegotiationRule> _negotiationRules = []
-    Collection&lt;ServiceCall> _serviceCalls = []
-}
-                    </code></pre>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <a href="https://gitsd.naumen.ru/repo/portal/blob/develop/rest/src/main/groovy/console/corpStandDsl.groovy">
-                        <h2>Как писать DSL</h2>
-                    </a>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>Генерация текстов</h2>
-                    <pre style="width:auto;"><code data-trim class="groovy">
-description textGenerator.generate(512)
-                    </code></pre>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>Файлы</h2>
-                    <pre style="width:auto;"><code data-trim class="groovy">
-//В классе
-@File
-@Attribute
-String logoPrev
-
-//В DSL
-logoPrev 'https://picsum.photos/800/600'
-                    </code></pre>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>Планы</h2>
+                    <h2>Связи объектов</h2>
                     <ul>
-                        <li>Вынести основную часть в модуль</li>
-                        <li>Избавиться от CollectionBuilder</li>
-                        <li>Упростить или избавиться от Builder</li>
-                        <li>Многократный запуск</li>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Циклы и Collection SDK</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>DSL легко писать и поддерживать если типизация статическая</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>duck typing vs @TypeChecked vs @CompileStatic</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Особенности типизации DSL. Аннотация @DelegatesTo</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Дженерики</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Стратегии разрешения имен, влияние на автодополнение</h2>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Заключение</h2>
+                    <ul>
+                        <li></li>
                     </ul>
                     <aside class="notes"></aside>
                 </section>
