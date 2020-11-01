@@ -272,17 +272,17 @@ div.eye{
     transform-origin: bottom;
 
 }
-.music-note{
+span.music-note{
     position: absolute;
     width: 1px;
     left: 50%;
     opacity: 0;
     color: #FCB040;
+    font-size: 70px;
 }
 .music-note#one{
     margin-left: -250px;
     top: 50%;
-    font-size: 120px;
     animation: note-anim 2s 3.5s infinite ease;
     animation-fill-mode: forwards;
     -webkit-animation: note-anim 2s 3.5s infinite ease;
@@ -291,7 +291,6 @@ div.eye{
 .music-note#two{
     margin-left: 150px;
     top: 30%;
-    font-size: 150px;
     animation: note-anim 2s 4.3s infinite ease;
     animation-fill-mode: forwards;
     -webkit-animation: note-anim 2s 4.3s infinite ease;

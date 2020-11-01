@@ -64,6 +64,11 @@
                 overflow: hidden;
             }
 
+            .reveal pre code.mini {
+                font-size: 6pt;
+                line-height: normal;
+            }
+
             .reveal pre code.small {
                 font-size: 8pt;
                 line-height: normal;
@@ -155,7 +160,7 @@
                 line-height: 70px;
                 text-align: right;
             }
-            div.baloon.left:after {
+            div.baloon.incoming:after {
                 content: '';
                 position: relative;
                 top:90px;
@@ -165,7 +170,7 @@
                 border-right: 0px solid transparent;
                 border-top: 30px solid #FFF;
             }
-            div.baloon.rigth:before {
+            div.baloon.outgoing:before {
                 content: '';
                 position: relative;
                 top:90px;
@@ -211,6 +216,29 @@
                 border-bottom: 125px solid #085896;
                 width: 600px;
             }
+            .credits-wrapper{
+                overflow: hidden;
+                width: 100%;
+                height: 500px;
+            }
+            pre.credits{
+                top: 100%;
+                animation: 20s credits linear infinite;
+            }
+            @keyframes credits {
+                0% {
+                    top: 100%;
+                }
+                100% {
+                    top: -500%;
+                }
+            }
+
+            div.settings {
+                position: relative;
+                top: 25px;
+                font-size: 70px;
+            }
         </style>
     </head>
 
@@ -237,6 +265,37 @@
                                 <div class="left square">
                                     <div class="progressbar"></div>
                                 </div>
+                                <div class="left square task fragment">
+                                    <article>
+                                        <h1>Очень важная задача</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <div class="bug fragment"></div>
+                                    </article>
+                                </div>
+                                <div class="left square fragment">
+                                    <pre><code data-trim class="bash mini" style="color: #4EC456;">
+git checkout develop
+git checkout -b newTask
+                                    </code></pre>
+                                </div>
+                                <div class="left square fragment">
+                                    <div class="progressbar"></div>
+                                </div>
+                                <div class="left square fragment">
+                                    <div class="settings">🛠</div>
+                                </div>
+                                <div class="left square task fragment">
+                                    <pre><code data-trim class="java mini">
+class Foo
+{
+    public void bar()
+    {
+        //do something
+    }
+}
+                                    </code></pre>
+                                </div>
+
                                 <div class="left1 square"></div>
                                 <div class="back1 square"></div>
                                 <div class="bottom1 square"></div>
@@ -270,8 +329,6 @@
                     </div>
                     <div class="man-wrapper">
                         <div class="body"></div>
-                        <div id="left" class="hand"></div>
-                        <div id="right" class="hand"></div>
                         <div class="head">
                             <div class="ear" id="left"></div>
                             <div class="ear" id="right"></div>
@@ -313,43 +370,269 @@
                 <section>
                     <h2>Portal</h2>
                     <ul>
-                        <li></li>
+                        <li>ES6+Flow+React+Redux</li>
+                        <li>Groovy</li>
                     </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
                     <h2>Groovy</h2>
                     <ul>
-                        <li></li>
+                        <li>SMP</li>
                     </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Много объектов со сложными взаимосвязями - тебе нужен DSL</h2>
+                    <h2>Groovy</h2>
                     <ul>
-                        <li></li>
+                        <li>Статическая и динамическая типизация</li>
+                        <li>Литералы списков, ассоциативных массивов, массивов и регулярных выражений</li>
+                        <li>Перегрузка операций</li>
+                        <li>AST-трансформации</li>
                     </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
                     <h2>Какая задача стояла?</h2>
                     <ul>
-                        <li></li>
+                        <li>Услуги</li>
+                        <li>Компоненты услуги</li>
+                        <li>Виды запросов</li>
+                        <li>Новости</li>
+                        <li>Опросы</li>
+                        <li>...</li>
                     </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
                     <h2>Как её можно решить без DSL?</h2>
                     <ul>
-                        <li></li>
+                        <li>Копии БД</li>
                     </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section class="pain">
                     <div class="dialog">
-                        <div class="baloon left">Я изменил дамп</div>
-                        <div class="baloon rigth">Я тоже</div>
+                        <div class="baloon incoming">Я изменил дамп</div>
+                        <div class="baloon outgoing">Я тоже</div>
                     </div>
+                </section>
+                <section>
+                    <h2>Как её можно решить без DSL?</h2>
+                    <ul>
+                        <li>Скрипт</li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Как её можно решить без DSL?</h2>
+                    <h3>Скрипт</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+def login = 'fedya'
+def ou = utils.create(OU_FQN, [title: 'Cупер отдел'])
+def employee = utils.create(
+        EMPLOYEE_FQN, [firstName: 'Федя',
+                       lastName : 'Федечкин',
+                       login    : login,
+                       parent   : ou]
+)
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Как её можно решить без DSL?</h2>
+                    <h3>Скрипт</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+def category = utils.create(CATEGORY_FQN, [title: "${ login }_category${ new Date() }"])
+def service = utils.create(
+        SERVICE_FQN, [devsManagers  : [employee],
+                      managersItServ: [employee],
+                      resipPolice   : 'allEmpl',
+                      servCategories: category,
+                      state         : 'available',
+                      title         : "${ login }_serv${ new Date() }"]
+)
+def component = utils.create(
+        COMPONENT_FQN, [parent     : service,
+                        state      : 'available',
+                        title      : "${ login }_comp",
+                        resipPolice: 'allEmpl']
+)
+def route = utils.create(
+        ROUTE_FQN, [scType  : 'serviceCall$incident',
+                    services: component,
+                    title   : "${ login }_inc"]
+)
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Как её можно решить без DSL?</h2>
+                    <h3>Скрипт</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy medium">
+def catalog = utils.create(
+        USER_CATALOG_FQN, [
+        title        : "${ login }_catalog",
+        linkedService: service
+]
+)
+
+def items = 3.times {
+    utils.create(
+            CATALOG_ITEM_FQN, [parent: catalog,
+                               title : "${ login }_$it"]
+    )
+}
+
+def attrGroup1 = utils.create(
+        ATTR_GROUP_FQN, [displayName      : true,
+                         ('formInService'): service,
+                         sequence         : 0,
+                         state            : 'active',
+                         title            : "${ login }_group_for_serv"]
+)
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Как её можно решить без DSL?</h2>
+                    <h3>Скрипт</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy small">
+def i = 0
+def types = [] + api.metainfo.getTypes('attrs')
+types[ATTRS_MULTI_BO].collect { type ->
+    def typeStr = type.toString()
+
+    def visors = visorMap[typeStr]
+    if (visors)
+    {
+        visors.each {
+            def visor = utils.findFirst('visor', [code: it])
+            if (visor)
+            {
+                def props = [attrGroups: attrGroup1,
+                             sequence  : i++,
+                             title     : "${ i }_${ login }_${ visor.title }",
+                             visor     : visor]
+                if (type.fqnCase in USER_CATALOG_CASES)
+                {
+                    props.userCatalog = catalog
+                }
+                log(level: 'error', "create $typeStr with visor $it")
+                utils.create(typeStr, props)
+            }
+        }
+    }
+    else
+    {
+        def props = [title: "${ i }_${ login }_${ type.title }", attrGroups: attrGroup1, sequence:
+                i++]
+        if (type.fqnCase in USER_CATALOG_CASES)
+        {
+            props.userCatalog = catalog
+        }
+        log("create $typeStr without visor")
+        utils.create(typeStr, props)
+    }
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Как её можно решить без DSL?</h2>
+                    <h3>Скрипт</h3>
+                    <div class="credits-wrapper">
+                        <pre class="credits" style="width:auto;"><code data-trim class="groovy">
+def login = 'fedya'
+def ou = utils.create(OU_FQN, [title: 'Cупер отдел'])
+def employee = utils.create(
+        EMPLOYEE_FQN, [firstName: 'Федя',
+                       lastName : 'Федечкин',
+                       login    : login,
+                       parent   : ou]
+)
+
+def category = utils.create(CATEGORY_FQN, [title: "${ login }_category${ new Date() }"])
+def service = utils.create(
+        SERVICE_FQN, [devsManagers  : [employee],
+                      managersItServ: [employee],
+                      resipPolice   : 'allEmpl',
+                      servCategories: category,
+                      state         : 'available',
+                      title         : "${ login }_serv${ new Date() }"]
+)
+def component = utils.create(
+        COMPONENT_FQN, [parent     : service,
+                        state      : 'available',
+                        title      : "${ login }_comp",
+                        resipPolice: 'allEmpl']
+)
+def route = utils.create(
+        ROUTE_FQN, [scType  : 'serviceCall$incident',
+                    services: component,
+                    title   : "${ login }_inc"]
+)
+def catalog = utils.create(
+        USER_CATALOG_FQN, [
+        title        : "${ login }_catalog",
+        linkedService: service
+]
+)
+
+def items = 3.times {
+    utils.create(
+            CATALOG_ITEM_FQN, [parent: catalog,
+                               title : "${ login }_$it"]
+    )
+}
+
+def attrGroup1 = utils.create(
+        ATTR_GROUP_FQN, [displayName      : true,
+                         ('formInService'): service,
+                         sequence         : 0,
+                         state            : 'active',
+                         title            : "${ login }_group_for_serv"]
+)
+def i = 0
+def types = [] + api.metainfo.getTypes('attrs')
+types[ATTRS_MULTI_BO].collect { type ->
+    def typeStr = type.toString()
+
+    def visors = visorMap[typeStr]
+    if (visors)
+    {
+        visors.each {
+            def visor = utils.findFirst('visor', [code: it])
+            if (visor)
+            {
+                def props = [attrGroups: attrGroup1,
+                             sequence  : i++,
+                             title     : "${ i }_${ login }_${ visor.title }",
+                             visor     : visor]
+                if (type.fqnCase in USER_CATALOG_CASES)
+                {
+                    props.userCatalog = catalog
+                }
+                log(level: 'error', "create $typeStr with visor $it")
+                utils.create(typeStr, props)
+            }
+        }
+    }
+    else
+    {
+        def props = [title: "${ i }_${ login }_${ type.title }", attrGroups: attrGroup1, sequence:
+                i++]
+        if (type.fqnCase in USER_CATALOG_CASES)
+        {
+            props.userCatalog = catalog
+        }
+        log("create $typeStr without visor")
+        utils.create(typeStr, props)
+    }
+}
+                        </code></pre>
+                    </div>
+                    <aside class="notes"></aside>
                 </section>
                 <section>
                     <h2>Helicopter view</h2>
@@ -358,9 +641,6 @@
                 </section>
 <section>
                     <h2>Как её решает DSL?</h2>
-                    <ul>
-                        <li></li>
-                    </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -368,17 +648,7 @@
                     <ul>
                         <li>Создать новые объекты - легко</li>
                         <li>Добавить новые сущности - легко</li>
-                        <li>Малая цена ошибки</li>
-                        <li>Автокомплит в IDE</li>
-                        <li>Ошибки в скрипте сразу видны в IDE</li>
                         <li>Мало кода</li>
-                    </ul>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>DSL в Groovy можно и без магии</h2>
-                    <ul>
-                        <li></li>
                     </ul>
                     <aside class="notes"></aside>
                 </section>
@@ -421,12 +691,24 @@ class Employee extends Bo
 def builder = new ObjectGraphBuilder()
 builder.classLoader = getClass().classLoader
 
-Company  company = builder.company(title:'Naumen'){
-    department(title: 'ДИТПО'){
-        employee(title:'Павел Зыков')
+Company  company = builder.company(title:'Рога и копыта'){
+    department(title: 'Управление'){
+        employee(title:'Остап Бендер')
     }
 }
                     </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Требования к скрипту наполнения</h2>
+                    <ul>
+                        <li>Создать новые объекты - легко</li>
+                        <li>Добавить новые сущности - легко</li>
+                        <li>Мало кода</li>
+                        <li>Малая цена ошибки</li>
+                        <li>Автокомплит в IDE</li>
+                        <li>Ошибки в скрипте сразу видны в IDE</li>
+                    </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -434,8 +716,7 @@ Company  company = builder.company(title:'Naumen'){
                     <ul>
                         <li class="good">Мало кода</li>
                         <li class="bad">IDE не подсказывает</li>
-                        <li class="bad">Не пройдет проверку типов</li>
-                        <li class="bad">Цена ошибки высока</li>
+                        <li class="bad">Цена ошибки высока (в Runtime)</li>
                         <li class="bad">Свои правила именования</li>
                         <li class="bad">Кастомизировать сложно</li>
                     </ul>
@@ -487,16 +768,31 @@ class Bo
         return this
     }
 }
-
-Bo configure(Closure config)
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <p></p>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+class Company extends Bo
 {
-    def bo = new Bo()
-    bo.with(config)
-    return bo
-}
+    Collection&lt;Department&gt; departments = []
 
-def bo = configure {
-    title '123'
+    static Company build(Closure config)
+    {
+        def company = new Company()
+        company.with(config)
+        return company
+    }
+
+    Company department(Closure config)
+    {
+        def department = new Department()
+        department.with(config)
+        departments &lt;&lt; department
+        return this
+    }
 }
                     </code></pre>
                     <aside class="notes"></aside>
@@ -505,22 +801,34 @@ def bo = configure {
                     <h2>Базовые возможности Groovy</h2>
                     <p></p>
                     <pre style="width:auto;"><code data-trim class="groovy">
-class Bo
+class Department extends Bo
 {
-    String title
-    Bo superBo
-
-    Bo title(String title)
+    Collection&lt;Employee&gt; employees = []
+    Department employee(Closure config)
     {
-        this.title = title
+        def employee = new Employee()
+        employee.with(config)
+        employees &lt;&lt; employee
         return this
     }
-    Bo superBo(Closure config)
-    {
-            def bo = new Bo()
-            bo.with(config)
-            this.superBo = bo
-            return this
+}
+
+class Employee extends Bo
+{
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <p></p>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+Company.build {
+    title 'Рога и копыта'
+    department {
+        title 'Управление'
+        employee {
+            title 'Остап Бендер'
         }
     }
 }
@@ -531,10 +839,48 @@ class Bo
                     <h2>Базовые возможности Groovy</h2>
                     <ul>
                         <li class="good">IDE подсказывает</li>
-                        <li class="good">Пройдет проверку типов</li>
-                        <li class="good">Цена ошибки низкая</li>
                         <li class="good">Именуем как удобно</li>
                         <li class="good">Кастомизировать легко</li>
+                        <li class="bad">IDE не подсказывает</li>
+                        <li class="bad">Цена ошибки высока (в Runtime)</li>
+                        <li class="bad">Много кода</li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>duck typing vs @TypeChecked vs @CompileStatic</h2>
+                    <ul>
+                        <li>duck typing == забыть про автокомплит</li>
+                        <li>@TypeChecked - проверяет типы при компиляции и только.</li>
+                        <li>@CompileStatic - проверяет типы и старается генерировать  байт код близкий к javac</li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Особенности типизации DSL. Аннотация @DelegatesTo</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+class Department extends Bo
+{
+    Collection&lt;Employee&gt; employees = []
+    Department employee(@DelegatesTo(Employee) Closure config)
+    {
+        def employee = new Employee()
+        employee.with(config)
+        employees &lt;&lt; employee
+        return this
+    }
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <ul>
+                        <li class="good">IDE подсказывает</li>
+                        <li class="good">Именуем как удобно</li>
+                        <li class="good">Кастомизировать легко</li>
+                        <li class="good">Автодополнение в IDE</li>
+                        <li class="good">Ошибки видно при компиляции</li>
                         <li class="bad">Много кода</li>
                     </ul>
                     <div class="rubber_stamp fragment">APPROVED</div>
@@ -542,73 +888,310 @@ class Bo
                 </section>
                 <section>
                     <h2>Базовые возможности Groovy, сокращаем количество кода</h2>
-                    <ul>
-                        <li></li>
-                    </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
                     <h2>Аннотация @Builder</h2>
-                    <ul>
-                        <li></li>
-                    </ul>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>Классы строители</h2>
                     <pre style="width:auto;"><code data-trim class="groovy">
-@Builder(forClass = News, builderStrategy = ExternalStrategy)
-class NewsBuilder extends BoBuilder implements IHasMake&lt;News&gt;
+class Bo
 {
-    NewsBuilder listServices(@DelegatesTo(strategy = Closure.DELEGATE_FIRST, value = ServiceCollectionBuilder) Closure config)
-    {
-        def builder = new ServiceCollectionBuilder(ServiceBuilder)
-        return _listServices(createCollection(builder, config))
-    }
+    String title
+}
 
-    NewsBuilder locations(@DelegatesTo(strategy = Closure.DELEGATE_FIRST, value = LocationCollectionBuilder) Closure config)
-    {
-        def builder = new LocationCollectionBuilder(LocationBuilder)
-        return _locations(createCollection(builder, config))
-    }
+@Builder(forClass = Bo, builderStrategy = ExternalStrategy)
+class BoBuilder
+{
+}
 
-    NewsBuilder ouProvNews(@DelegatesTo(strategy = Closure.DELEGATE_FIRST, value = OuCollectionBuilder) Closure config)
-    {
-        def builder = new OuCollectionBuilder(OuBuilder)
-        return _ouProvNews(createCollection(builder, config))
-    }
+static Bo create(@DelegatesTo(BoBuilder) Closure config)
+{
+    def builder = new BoBuilder()
+    builder.with(config)
+    return builder.build()
 }
                     </code></pre>
                     <aside class="notes"></aside>
                 </section>
                 <section>
                     <h2>Проблемы с наследованием</h2>
-                    <ul>
-                        <li></li>
-                    </ul>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+trait IHasMake&lt;T>
+{
+    T make()
+    {
+        def forClass = this.class.getAnnotation(Builder).forClass()
+        def object = (T) forClass.newInstance()
+        def properties = object.metaClass.properties.name - 'class'
+        properties.each {
+            def field = ReflectionUtils.findField(this.class, it)
+            if (field)
+            {
+                ReflectionUtils.makeAccessible(field)
+                def value = field.get(this)
+                //не заменять на groovy-truth!
+                if (value != null)
+                {
+                    object[it] = value
+                }
+            }
+        }
+        return object
+    }
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>@DelegatesTo. Дженерики</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+static &lt;T extends Bo, B extends IHasMake&lt;T&gt;&gt; T create(
+                        @DelegatesTo.Target B builder,
+                        @DelegatesTo Closure config
+)
+{
+    builder.with(config)
+    return builder.make()
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+
+                <section>
+                    <h2>Создание коллекций объектов</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy medium">
+class CollectionBuilder&lt;T extends Bo, B extends IHasMake&lt;T>>
+{
+    Class&lt;B> itemBuilderClass
+    Collection&lt;T> result = []
+
+    CollectionBuilder(Class&lt;B> itemBuilderClass)
+    {
+        this.itemBuilderClass = itemBuilderClass
+    }
+
+    CollectionBuilder&lt;T, B> item(@DelegatesTo(type = "B", strategy = Closure.DELEGATE_FIRST) Closure config)
+    {
+        def builder = (B) itemBuilderClass.newInstance()
+        result.add(create(builder, config))
+        return this
+    }
+
+    CollectionBuilder&lt;T, B> item(Bo item)
+    {
+        result.add(item as T)
+        return this
+    }
+
+    Collection&lt;T> build()
+    {
+        return result
+    }
+}
+                    </code></pre>
                     <aside class="notes"></aside>
                 </section>
                 <section>
                     <h2>Создание коллекций объектов</h2>
-                    <ul>
-                        <li></li>
-                    </ul>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+static &lt;T extends Bo, B extends IHasMake&lt;T>> Collection&lt;T> createCollection(
+                        @DelegatesTo.Target CollectionBuilder&lt;T, B> builder,
+                        @DelegatesTo Closure config
+)
+{
+    DefaultGroovyMethods.with(builder, config)
+    return builder.build()
+}
+                    </code></pre>
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Классы строители коллекций</h2>
-                    <pre style="width:auto;"><code data-trim class="groovy">
+                    <h2>Cокращаем количество кода</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy medium">
+class Bo
+{
+    String title
+}
+
+class Company extends Bo
+{
+    Collection&lt;Department> _departments = []
+
+    static Company build(@DelegatesTo(CompanyBuilder) Closure config)
+    {
+        def builder = new CompanyBuilder()
+        builder.with(config)
+        return create(builder, config)
+    }
+}
+
+class Department extends Bo
+{
+    Collection&lt;Employee> _employees = []
+}
+
+class Employee extends Bo
+{
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Cокращаем количество кода</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy medium">
+@Builder(forClass = Bo, builderStrategy = ExternalStrategy)
+class BoBuilder
+{}
+
+@Builder(forClass = Company, builderStrategy = ExternalStrategy)
+class CompanyBuilder extends BoBuilder implements IHasMake&lt;Company>
+{
+    CompanyBuilder departments(@DelegatesTo(DepartmentCollectionBuilder) Closure config)
+    {
+        def builder = new DepartmentCollectionBuilder(DepartmentBuilder)
+        return _departments(createCollection(builder, config))
+    }
+}
+
+@Builder(forClass = Department, builderStrategy = ExternalStrategy)
+class DepartmentBuilder extends BoBuilder implements IHasMake&lt;Department>
+{
+    DepartmentBuilder employees(@DelegatesTo(EmployeeCollectionBuilder) Closure config)
+    {
+        def builder = new EmployeeCollectionBuilder(EmployeeBuilder)
+        return _employees(createCollection(builder, config))
+    }
+}
+
+@Builder(forClass = Employee, builderStrategy = ExternalStrategy)
+class EmployeeBuilder  extends BoBuilder implements IHasMake&lt;Employee>
+{}
+
 @InheritConstructors
-class NewsCollectionBuilder extends CollectionBuilder&gt;News, NewsBuilder&lt;
+class DepartmentCollectionBuilder extends CollectionBuilder&lt;Department, DepartmentBuilder>
+{}
+@InheritConstructors
+class EmployeeCollectionBuilder extends CollectionBuilder&lt;Employee, EmployeeBuilder>
 {}
                     </code></pre>
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Связи объектов</h2>
+                    <h2>Cокращаем количество кода</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+Company.build {
+    title 'Рога и копыта'
+    departments {
+        item{
+            title 'Управление'
+            employees{
+                item {
+                    title 'Остап Бендер'
+                }
+            }
+        }
+    }
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>@DelegatesTo. Стратегии разрешения имен, влияние на автодополнение</h2>
                     <ul>
-                        <li></li>
+                        <li>OWNER_FIRST</li>
+                        <li>DELEGATE_FIRST</li>
+                        <li>OWNER_ONLY</li>
+                        <li>DELEGATE_ONLY</li>
+                        <li>TO_SELF</li>
                     </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Связи объектов</h2>
+                    <h3>По идентификатору</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+@Singleton
+class BoRegistry
+{
+    Map&lt;String, Bo> bos = [:]
+
+    void register(String id, Bo bo)
+    {
+        bos[id] = bo
+    }
+
+    Bo get(String id)
+    {
+        return bos[id]
+    }
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Связи объектов</h2>
+                    <h3>По идентификатору</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy medium">
+class Bo
+{
+    String id
+    String title
+}
+
+static &lt;T extends Bo, B extends IHasMake&lt;T&gt;&gt; T create(
+                        @DelegatesTo.Target B builder,
+                        @DelegatesTo Closure config
+)
+{
+    builder.with(config)
+    T bo = builder.make()
+
+    if (bo.id)
+    {
+        BoRegistry.instance.register(bo.id, bo)
+    }
+
+    return bo
+}
+
+static &lt;B extends Bo> B refId(String id)
+{
+    return (B) BoRegistry.instance.get(id)
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Связи объектов</h2>
+                    <h3>По идентификатору</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+Company.build {
+    title 'Рога и копыта'
+    departments {
+        item {
+            title 'Управление'
+            employees {
+                item {
+                    id 'ostap'
+                    title 'Остап Бендер'
+                }
+            }
+        }
+        item {
+            title 'Работа с общественностью'
+            employees {
+                item refId('ostap')
+            }
+        }
+    }
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Связи объектов</h2>
+                    <h3>Ссылка на родителя</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+                    </code></pre>
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -619,49 +1202,62 @@ class NewsCollectionBuilder extends CollectionBuilder&gt;News, NewsBuilder&lt;
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>DSL легко писать и поддерживать если типизация статическая</h2>
+                    <h2>Заключение</h2>
                     <ul>
-                        <li></li>
-                    </ul>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>duck typing vs @TypeChecked vs @CompileStatic</h2>
-                    <ul>
-                        <li></li>
-                    </ul>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>Особенности типизации DSL. Аннотация @DelegatesTo</h2>
-                    <ul>
-                        <li></li>
-                    </ul>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>Дженерики</h2>
-                    <ul>
-                        <li></li>
-                    </ul>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>Стратегии разрешения имен, влияние на автодополнение</h2>
-                    <ul>
-                        <li></li>
+                        <li>Много объектов со сложными взаимосвязями - тебе нужен DSL</li>
+                        <li>DSL в Groovy можно и без магии</li>
+                        <li>DSL легко писать и поддерживать если типизация статическая</li>
                     </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
                     <h2>Заключение</h2>
+                    <h3>Что нам дал DSL</h3>
                     <ul>
-                        <li></li>
+                        <li>DSL достаточно прост, что бы его писали все</li>
+                        <li>Параллельные задачи на добавление новых сущностей/настроек больше не блокируют друг друга</li>
+                        <li>Автотесты стало проще писать, после того как они стали использовать DSL</li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Заключение</h2>
+                    <h3>Что нам дала типизация DSL</h3>
+                    <ul>
+                        <li>Автокомплит в IDE</li>
+                        <li>Компиляция не пропускает ошибки</li>
                     </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
                     <h1>Вопросы?</h1>
+                    <div class="man-wrapper">
+                        <div class="body"></div>
+                        <div class="head">
+                            <div class="ear" id="left"></div>
+                            <div class="ear" id="right"></div>
+                            <div class="hair-main">
+                                <div class="sideburn" id="left"></div>
+                                <div class="sideburn" id="right"></div>
+                                <div class="hair-top"></div>
+                            </div>
+                            <div class="face">
+                                <div class="nose"></div>
+                                <div class="eye-shadow" id="left">
+                                    <div class="eyebrow"></div>
+                                    <div class="eye"></div>
+                                </div>
+                                <div class="eye-shadow" id="right">
+                                    <div class="eyebrow"></div>
+                                    <div class="eye"></div>
+                                </div>
+                                <div class="mouth"></div>
+                                <div class="chin"></div>
+                            </div>
+                        </div>
+                        <span class="music-note" id="one">Groovy</span>
+                        <span class="music-note" id="two">Rocks!</span>
+                    </div>
                     <aside class="notes"></aside>
                 </section>
             </div>
