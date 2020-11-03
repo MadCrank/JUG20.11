@@ -1,6 +1,6 @@
 div.office
 {
-    background-color: darkgray;
+    background-color: #8c8d8e;
     height: 450px;
     width: 100%;
     padding: 50px;
@@ -10,7 +10,7 @@ div.window{
     width: 200px;
     height: 300px;
     border: 20px white solid;
-    background-color: cornflowerblue;
+    background-color: #00BDFF;
     display: flex;
 }
 
@@ -43,7 +43,7 @@ div.man-wrapper{
     height:500px;
     width:100%;
     position: absolute;
-    top: 163px;
+    top: 153px;
 }
 
 div.body{
@@ -89,7 +89,7 @@ div.head{
 div.hair-main{
     width:220px;
     height: 0px;
-    background: #db8e29;
+    background: #FF9D00;
     border-radius: 54px 54px 0px 0px;
     margin-left: -12px;
     margin-top: -10px;
@@ -106,7 +106,7 @@ div.hair-top{
     height: 70px;
     opacity: 0;
     border-top-left-radius: 30px;
-    background: #db8e29;
+    background: #FF9D00;
     position: relative;
     top: -17px;
     left: 55%;
@@ -123,7 +123,7 @@ div.hair-top{
 div.sideburn{
     width: 8px;
     height: 25px;
-    background: #db8e29;
+    background: #FF9D00;
     position: absolute;
     bottom: -25px;
     opacity: 0;
@@ -233,7 +233,7 @@ div.eye-shadow#right{
 div.eyebrow{
     width: 40px;
     height: 10px;
-    background: #db8e29;
+    background: #FF9D00;
     position: absolute;
     top: -35px;
     left: 50%;
@@ -257,7 +257,7 @@ div.eye{
     width: 20px;
     height: 28px;
     border-radius: 10px;
-    background: #3d602f;
+    background: #008713;
     position: absolute;
     top: -18px;
     left: 50%;
@@ -277,7 +277,7 @@ span.music-note{
     width: 1px;
     left: 50%;
     opacity: 0;
-    color: #FCB040;
+    color: #ff6611;
     font-size: 70px;
 }
 .music-note#one{

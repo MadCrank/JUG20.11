@@ -104,7 +104,7 @@ div.task{
     height:2.5vw;
     position:relative;
     border-radius:100%;
-    background-color: #00A388;
+    background-color: #008713;
     left: 3.5vw;
     top: -1.5vw;
 }
@@ -116,7 +116,7 @@ div.task{
     position:absolute;
     top:-.5vw;
     left:.375vw;
-    background:#00A388;
+    background:#008713;
     border-radius:100%;
 }
 
@@ -130,24 +130,24 @@ div.task{
             top left / 100% 100% linear-gradient(
                     transparent,
                     transparent 45%,
-                    #00A388 45%,
-                    #00A388 55%,
+                    #008713 45%,
+                    #008713 55%,
                     transparent 55%
             ),
             top left / 100% 100% linear-gradient(
                     to bottom right,
                     transparent,
                     transparent 45%,
-                    #00A388 45%,
-                    #00A388 55%,
+                    #008713 45%,
+                    #008713 55%,
                     transparent 55%
             ),
             top left / 100% 100% linear-gradient(
                     to bottom left,
                     transparent,
                     transparent 45%,
-                    #00A388 45%,
-                    #00A388 55%,
+                    #008713 45%,
+                    #008713 55%,
                     transparent 55%
             );
 }
@@ -170,13 +170,13 @@ div.progressbar{
     position:absolute;
     top:calc(50% - 7px);
     left:calc(50% - 29px);
-    border:2px solid #4EC456;
+    border:2px solid #00C621;
 }
 div.progressbar:after{
     content:"";
     width:0;
     height:100%;
-    background-color:#4EC456;
+    background-color:#00C621;
     position:absolute;
     top:0;
     left:0;

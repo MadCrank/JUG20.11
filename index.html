@@ -23,11 +23,16 @@
         />
 
         <link rel="stylesheet" href="css/reveal.css" />
+        <link rel="stylesheet" href="fonts/Aeroport-Bold/style.css" />
+        <link rel="stylesheet" href="fonts/Geometria-Bold/style.css" />
+        <link rel="stylesheet" href="fonts/Geometria-Medium/style.css" />
+        <link rel="stylesheet" href="fonts/Geometria-Regular/style.css" />
         <link rel="stylesheet" href="css/fedya.css" />
         <link rel="stylesheet" href="css/computer.css" />
         <link rel="stylesheet" href="css/theme/white.css" id="theme" />
 
         <link rel="stylesheet" href="css/hljs/vs.css" id="highlight-theme" />
+        <link rel="stylesheet" href="css/style.css" />
 
         <!-- Printing and PDF exports -->
         <script>
@@ -45,207 +50,13 @@
         <![endif]-->
 
         <style>
-            .reveal .slide-number {
-                font-size: 22pt;
-                color: black;
-            }
-
-            .reveal pre {
-                background: none;
-                border: none;
-                box-shadow: none;
-            }
-
-            .reveal pre code {
-                color: black;
-                background: none;
-                box-shadow: none;
-                max-height: none;
-                overflow: hidden;
-            }
-
-            .reveal pre code.mini {
-                font-size: 6pt;
-                line-height: normal;
-            }
-
-            .reveal pre code.small {
-                font-size: 8pt;
-                line-height: normal;
-            }
-
-            .reveal pre code.medium {
-                font-size: 10pt;
-                line-height: normal;
-            }
-
-            .reveal section img {
-                border: none;
-                box-shadow: none;
-                max-width: 70%;
-            }
-
-            .reveal .footer {
-                font-size: 22pt;
-                color: black;
-                text-align: center;
-                position: absolute;
-                width: 100%;
-                bottom: 0.5em;
-            }
-
-            .reveal .cartoon {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-            }
-
-            .reveal .rubber_stamp {
-                font-family: "Vollkorn", serif;
-                font-size: 39px;
-                line-height: 45px;
-                text-transform: uppercase;
-                font-weight: bold;
-                color: red;
-                border: 7px solid red;
-                float: left;
-                padding: 10px 7px;
-                border-radius: 10px;
-
-                opacity: 0.8;
-                -webkit-transform: rotate(-10deg);
-                -o-transform: rotate(-10deg);
-                -moz-transform: rotate(-10deg);
-                -ms-transform: rotate(-10deg);
-                position: absolute;
-                bottom: 20%;
-                right: 1%;
-            }
-
-            .reveal .rubber_stamp::after {
-                position: absolute;
-                content: " ";
-                width: 100%;
-                height: auto;
-                min-height: 100%;
-                top: -10px;
-                left: -10px;
-                padding: 10px;
-                background: url(img/noise.png) repeat;
-            }
-
-            .reveal .nau {
-                color: orangered;
-                font-weight: bold;
-                font-family: "Franklin Gothic Medium", "Arial Narrow", Arial,
-                    sans-serif;
-            }
-            section.pain {
-                background-image: url(img/crying_twins.jpg);
-                background-size: cover;
-                width: 100%;
-                height: 100%;
-            }
-            .dialog {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
-            }
-            div.baloon {
-                background-color: #fff;
-                border-radius: 20px;
-                padding: 10px;
-                max-height: 70px;
-                line-height: 70px;
-                text-align: right;
-            }
-            div.baloon.incoming:after {
-                content: '';
-                position: relative;
-                top:90px;
-                width: 0;
-                height: 0;
-                border-left: 40px solid transparent;
-                border-right: 0px solid transparent;
-                border-top: 30px solid #FFF;
-            }
-            div.baloon.outgoing:before {
-                content: '';
-                position: relative;
-                top:90px;
-                width: 0;
-                height: 0;
-                border-left: 0px solid transparent;
-                border-right: 40px solid transparent;
-                border-top: 30px solid #FFF;
-            }
-            li.good{
-                color:green;
-            }
-            li.bad{
-                color: red;
-            }
-            .pyramid {
-                display: flex;
-                flex-direction: column-reverse;
-                justify-content: center;
-                align-items: center;
-                color: #fff;
-            }
-            .pyramid > div {
-                border-left: 150px solid transparent;
-                border-right: 150px solid transparent;
-                height: 0;
-                line-height: 125px;
-                text-align: center;
-            }
-            #portal {
-                border-bottom: 125px solid #00529f;
-                width: 0;
-            }
-            #portal:before {
-                content: "Portal";
-                margin-left: -50px;
-            }
-            #meta {
-                border-bottom: 125px solid #6b89a0;
-                width: 300px;
-            }
-            #smp {
-                border-bottom: 125px solid #085896;
-                width: 600px;
-            }
-            .credits-wrapper{
-                overflow: hidden;
-                width: 100%;
-                height: 500px;
-            }
-            pre.credits{
-                top: 100%;
-                animation: 20s credits linear infinite;
-            }
-            @keyframes credits {
-                0% {
-                    top: 100%;
-                }
-                100% {
-                    top: -500%;
-                }
-            }
-
-            div.settings {
-                position: relative;
-                top: 25px;
-                font-size: 70px;
-            }
-        </style>
+</style>
     </head>
 
     <body>
         <div class="reveal">
             <div class="footer">
-                <span class="nau">NAUMEN</span> Павел Зыков
+                <img class="logo" src="img/logo.png" alt="Naumen"><span>Павел Зыков</span>
             </div>
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
@@ -273,8 +84,8 @@
                                     </article>
                                 </div>
                                 <div class="left square fragment">
-                                    <pre><code data-trim class="bash mini" style="color: #4EC456;">
-git checkout develop
+                                    <pre><code data-trim class="bash mini" style="color: #00C621;">
+git checkout master
 git checkout -b newTask
                                     </code></pre>
                                 </div>
@@ -361,14 +172,15 @@ class Foo
                     <h2>Ликбез</h2>
                     <h3>SMP&Portal</h3>
                     <div class="pyramid">
-                        <div class="fragment" id="smp">SMP</div>
+                        <div class="fragment" id="smp">Service Management Platform</div>
                         <div class="fragment" id="meta">Metainformation</div>
                         <div class="fragment" id="portal"></div>
                     </div>
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Portal</h2>
+                    <h2>Ликбез</h2>
+                    <h3>Portal</h3>
                     <ul>
                         <li>ES6+Flow+React+Redux</li>
                         <li>Groovy</li>
@@ -376,20 +188,94 @@ class Foo
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Groovy</h2>
+                    <h2>Ликбез</h2>
+                    <h3>Groovy</h3>
                     <ul>
                         <li>SMP</li>
                     </ul>
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Groovy</h2>
+                    <h2>Ликбез</h2>
+                    <h3>Groovy</h3>
                     <ul>
                         <li>Статическая и динамическая типизация</li>
                         <li>Литералы списков, ассоциативных массивов, массивов и регулярных выражений</li>
                         <li>Перегрузка операций</li>
+                        <li>Метапрограммирование в Runtime</li>
                         <li>AST-трансформации</li>
                     </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Ликбез</h2>
+                    <h2>Метапрограммирование</h2>
+                    <ul>
+                        <li>Программа порождает/изменяет другую программу</li>
+                        <li>Генерация кода при компиляции</li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Ликбез</h2>
+                    <h3>Метапрограммирование в Runtime</h3>
+                    <pre style="width:auto;">
+                        <code data-trim class="groovy">
+SomeClass hugeObject = someLib.getSomeObject()
+String path = 'firstProperty/secondProperty'
+                        </code>
+                    </pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Ликбез</h2>
+                    <h3>Метапрограммирование в Runtime</h3>
+                    <pre style="width:auto;">
+                        <code data-trim class="groovy">
+hugeObject.metaClass.getByPath = { String path -> /*code*/ }
+hugeObject.getByPath(path)
+                        </code>
+                    </pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Ликбез</h2>
+                    <h3>Метапрограммирование в Runtime</h3>
+                    <pre style="width:auto;">
+                        <code data-trim class="groovy">
+trait PathSupport
+{
+    def &lt;T> T getByPath(String path)
+    {
+        /* code */
+    }
+}
+
+hugeObject.withTraits(PathSupport)
+hugeObject.getByPath(path)
+                        </code>
+                    </pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Ликбез</h2>
+                    <h3>Метапрограммирование в Runtime</h3>
+                    <pre style="width:auto;">
+                        <code data-trim class="groovy">
+class PathCategory
+{
+    static &lt;T> T getByPath(SomeClass self, String path)
+    {
+        /* code */
+    }
+}
+
+use(PathCategory)
+{
+    hugeObject.getByPath(path)
+}
+                        </code>
+                    </pre>
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -664,6 +550,9 @@ types[ATTRS_MULTI_BO].collect { type ->
                 <section>
                     <h2>Пример</h2>
                     <pre style="width:auto;"><code data-trim class="groovy">
+/**
+ * Бизнес объект - любой объект в платформе SMP
+ */
 class Bo
 {
     String title
@@ -713,7 +602,7 @@ Company  company = builder.company(title:'Рога и копыта'){
                 </section>
                 <section>
                     <h2>ObjectGraphBuilder</h2>
-                    <ul>
+                    <ul class="list">
                         <li class="good">Мало кода</li>
                         <li class="bad">IDE не подсказывает</li>
                         <li class="bad">Цена ошибки высока (в Runtime)</li>
@@ -752,6 +641,184 @@ protected Object createNode(Object name, Map attributes) {
                         <li class="bad">Да ну нафиг</li>
                     </ul>
                     <div class="cartoon"><img src="img/boo.png"/></div>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <ul>
+                        <li>Замыкания</li>
+                        <li>Синтаксический сахар</li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <h3>Замыкания</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+def sum = {a, b -> return a+b}
+println sum(1, 1) //outputs 2
+
+def square = {it*it}
+println square(2) //outputs 4
+
+def sayOk= {->'OK'}
+println sayOk() //outputs OK
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <h3>Замыкания</h3>
+                    <ul>
+                        <li><strong>this</strong> - экземпляр класса, где определено замыкание.</li>
+                        <li><strong>owner</strong> - то же самое, что this, но если замыкание определено в замыкании, то внешнее замыкание</li>
+                        <li><strong>delegate</strong> - то же самое, что owner. Можно изменять программно.</li>
+                    </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <h3>Замыкания</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+class MyClass {
+  def outerClosure = {
+    println this.class.name    // outputs MyClass
+    println owner.class.name    // outputs MyClass
+    println delegate.class.name  //outputs MyClass
+    def nestedClosure = {
+      println this.class.name    // outputs MyClass
+      println owner.class.name    // outputs MyClass$_closure1
+      println delegate.class.name  // outputs MyClass$_closure1
+    }
+    nestedClosure()
+  }
+}
+
+def closure = new MyClass().closure
+closure()
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <h3>Замыкания</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+def arguments = [a:1, b:1]
+def sum = {a+b}
+sum.delegate = arguments
+println sum() //outputs 2
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <h3>Замыкания</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+def arguments = [a:1, b:1]
+arguments.with {a+b}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <h3>Синтаксический сахар</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy medium">
+def builder = new MessageBuilder()
+
+def message = builder.with{
+    say 'Hello' to 'world'
+}.build()
+
+println message // outputs "Hello, world!"
+
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <h3>Синтаксический сахар</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy medium">
+class Message
+{
+    String to
+    String value
+
+    String toString()
+    {
+        return "${value}, ${to}!"
+    }
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <h3>Синтаксический сахар</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy medium">
+class MessageBuilder
+{
+    Message message
+
+    MessageBuilder say(String message)
+    {
+        this.message = new Message(value: message)
+        return this
+    }
+
+    MessageBuilder to(String to)
+    {
+        message.to = to
+        return this
+    }
+
+    Message build()
+    {
+       return message
+    }
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Базовые возможности Groovy</h2>
+                    <h3>Синтаксический сахар</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy medium">
+def builder = new MessageBuilder()
+
+def message = builder.with{
+    say 'Hello' to 'world'
+}.build()
+
+println message // outputs "Hello, world!"
+
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Пример</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+/**
+ * Бизнес объект - любой объект в платформе SMP
+ */
+class Bo
+{
+    String title
+}
+
+class Company extends Bo
+{
+    Collection&lt;Department&gt; departments = []
+}
+
+class Department extends Bo
+{
+    Collection&lt;Employee&gt; employees = []
+}
+
+class Employee extends Bo
+{
+}
+                    </code></pre>
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -838,7 +905,6 @@ Company.build {
                 <section>
                     <h2>Базовые возможности Groovy</h2>
                     <ul>
-                        <li class="good">IDE подсказывает</li>
                         <li class="good">Именуем как удобно</li>
                         <li class="good">Кастомизировать легко</li>
                         <li class="bad">IDE не подсказывает</li>
@@ -848,12 +914,51 @@ Company.build {
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>duck typing vs @TypeChecked vs @CompileStatic</h2>
+                    <h2>Динамическая типизация vs @TypeChecked vs @CompileStatic</h2>
                     <ul>
-                        <li>duck typing == забыть про автокомплит</li>
+                        <li>Динамическая типизация == забыть про автокомплит</li>
                         <li>@TypeChecked - проверяет типы при компиляции и только.</li>
                         <li>@CompileStatic - проверяет типы и старается генерировать  байт код близкий к javac</li>
                     </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>@TypeChecked vs @CompileStatic</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy medium">
+import groovy.transform.CompileStatic
+import groovy.transform.TypeChecked
+
+class Foo {
+  def bar = "bar"
+}
+
+class TestTypeCheck {
+  Foo foo
+
+  TestTC() {
+    foo = new Foo()
+    foo.metaClass.getBar = { "metaClass bar" }
+  }
+
+  @TypeChecked
+  def typed() {
+    foo.bar
+  }
+
+  @CompileStatic
+  def compiled() {
+    foo.bar
+  }
+}
+
+assert new TestTC().typed() == "metaClass bar"
+assert new TestTC().compiled() == "bar"
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>@TypeChecked</h2>
+                    <img src="img/compilationError.png" alt="Ошибки компиляции">
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -874,12 +979,16 @@ class Department extends Bo
                     <aside class="notes"></aside>
                 </section>
                 <section>
+                    <h2>Успех</h2>
+                    <img src="img/compilationSuccess.png" alt="Успех компиляции">
+                    <aside class="notes"></aside>
+                </section>
+                <section>
                     <h2>Базовые возможности Groovy</h2>
                     <ul>
-                        <li class="good">IDE подсказывает</li>
                         <li class="good">Именуем как удобно</li>
                         <li class="good">Кастомизировать легко</li>
-                        <li class="good">Автодополнение в IDE</li>
+                        <li class="good">IDE подсказывает</li>
                         <li class="good">Ошибки видно при компиляции</li>
                         <li class="bad">Много кода</li>
                     </ul>
@@ -1095,6 +1204,11 @@ Company.build {
                     <aside class="notes"></aside>
                 </section>
                 <section>
+                    <h2>Успех</h2>
+                    <img src="img/autoCompleteProblem.png" alt="Успех компиляции">
+                    <aside class="notes"></aside>
+                </section>
+                <section>
                     <h2>@DelegatesTo. Стратегии разрешения имен, влияние на автодополнение</h2>
                     <ul>
                         <li>OWNER_FIRST</li>
@@ -1202,6 +1316,192 @@ Company.build {
                     <aside class="notes"></aside>
                 </section>
                 <section>
+                    <h2>Было</h2>
+                    <div class="credits-wrapper">
+                        <pre class="credits" style="width:auto;"><code data-trim class="groovy">
+def login = 'fedya'
+def ou = utils.create(OU_FQN, [title: 'Cупер отдел'])
+def employee = utils.create(
+        EMPLOYEE_FQN, [firstName: 'Федя',
+                       lastName : 'Федечкин',
+                       login    : login,
+                       parent   : ou]
+)
+
+def category = utils.create(CATEGORY_FQN, [
+                               title: "${ login }_category${ new Date() }"
+])
+def service = utils.create(
+        SERVICE_FQN, [devsManagers  : [employee],
+                      managersItServ: [employee],
+                      resipPolice   : 'allEmpl',
+                      servCategories: category,
+                      state         : 'available',
+                      title         : "${ login }_serv${ new Date() }"]
+)
+def component = utils.create(
+        COMPONENT_FQN, [parent     : service,
+                        state      : 'available',
+                        title      : "${ login }_comp",
+                        resipPolice: 'allEmpl']
+)
+def route = utils.create(
+        ROUTE_FQN, [scType  : 'serviceCall$incident',
+                    services: component,
+                    title   : "${ login }_inc"]
+)
+def catalog = utils.create(
+        USER_CATALOG_FQN, [
+        title        : "${ login }_catalog",
+        linkedService: service
+]
+)
+
+def items = 3.times {
+    utils.create(
+            CATALOG_ITEM_FQN, [parent: catalog,
+                               title : "${ login }_$it"]
+    )
+}
+
+def attrGroup1 = utils.create(
+        ATTR_GROUP_FQN, [displayName      : true,
+                         ('formInService'): service,
+                         sequence         : 0,
+                         state            : 'active',
+                         title            : "${ login }_group_for_serv"]
+)
+def i = 0
+def types = [] + api.metainfo.getTypes('attrs')
+types[ATTRS_MULTI_BO].collect { type ->
+    def typeStr = type.toString()
+
+    def visors = visorMap[typeStr]
+    if (visors)
+    {
+        visors.each {
+            def visor = utils.findFirst('visor', [code: it])
+            if (visor)
+            {
+                def props = [attrGroups: attrGroup1,
+                             sequence  : i++,
+                             title     : "${ i }_${ login }_${ visor.title }",
+                             visor     : visor]
+                if (type.fqnCase in USER_CATALOG_CASES)
+                {
+                    props.userCatalog = catalog
+                }
+                log(level: 'error', "create $typeStr with visor $it")
+                utils.create(typeStr, props)
+            }
+        }
+    }
+    else
+    {
+        def props = [
+                        title: "${ i }_${ login }_${ type.title }",
+                        attrGroups: attrGroup1,
+                        sequence: i++
+        ]
+        if (type.fqnCase in USER_CATALOG_CASES)
+        {
+            props.userCatalog = catalog
+        }
+        log("create $typeStr without visor")
+        utils.create(typeStr, props)
+    }
+}</code></pre>
+                    </div>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Стало</h2>
+                    <div class="credits-wrapper">
+                        <pre class="credits" style="width:auto;"><code data-trim class="groovy">
+Stand.build {
+        ous {
+            item {
+                title 'Cупер отдел'
+                employees {
+                    item {
+                        id loginValue
+                        firstName 'Федя'
+                        lastName 'Федечкин'
+                        login loginValue
+                    }
+                }
+            }
+        }
+        categories {
+            item {
+                title "${ loginValue }_category${ new Date() }"
+                services {
+                    item {
+                        devsManagers {
+                            item refId(loginValue)
+                        }
+                        managersItServ {
+                            item refId(loginValue)
+                        }
+                        resipPolice 'allEmpl'
+                        state 'available'
+                        title "${ loginValue }_serv${ new Date() }"
+                        components {
+                            item {
+                                state 'available'
+                                title "${ loginValue }_comp"
+                                resipPolice 'allEmpl'
+                                routes {
+                                    item {
+                                        scType 'serviceCall$incident'
+                                        title "${ loginValue }_inc"
+                                    }
+                                }
+                            }
+                            catalogs {
+                                item {
+                                    id "${ loginValue }_catalog"
+                                    title "${ loginValue }_catalog"
+                                    items {
+                                        3.times { idx ->
+                                            item {
+                                                id "elem_$idx"
+                                                title "${ loginValue }_$idx"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            attributeGroups {
+                                attributeGroups {
+                                    attrTypes.eachWithIndex run.it { Enum attributesGroupType, int index ->
+                                        item {
+                                            id "${ attributesGroupType.name().toLowerCase() }Attrs" as String
+                                            title attributesGroupType.getAt('title') as String
+                                            displayName true
+                                            sequence index
+                                            state 'active'
+                                            attributes attributesGroupType, refId("${ loginValue }_catalog")
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+                    </code></pre>
+                    </div>
+                    <aside class="notes"></aside>
+                </section>
+                <section class="happy">
+                    <div class="dialog">
+                        <div class="baloon incoming">Я изменил<br>наполнение</div>
+                        <div class="baloon outgoing">Я тоже</div>
+                    </div>
+                </section>
+                <section>
                     <h2>Заключение</h2>
                     <ul>
                         <li>Много объектов со сложными взаимосвязями - тебе нужен DSL</li>
@@ -1214,8 +1514,8 @@ Company.build {
                     <h2>Заключение</h2>
                     <h3>Что нам дал DSL</h3>
                     <ul>
-                        <li>DSL достаточно прост, что бы его писали все</li>
                         <li>Параллельные задачи на добавление новых сущностей/настроек больше не блокируют друг друга</li>
+                        <li>DSL достаточно прост, что бы его писали все</li>
                         <li>Автотесты стало проще писать, после того как они стали использовать DSL</li>
                     </ul>
                     <aside class="notes"></aside>
@@ -1267,6 +1567,11 @@ Company.build {
         <script src="js/reveal.js"></script>
 
         <script>
+            var divisor = document.getElementById("divisor"),
+                slider = document.getElementById("slider");
+            function moveDivisor() {
+                divisor.style.width = slider.value+"%";
+            }
             // Full list of configuration options available at:
             // https://github.com/hakimel/reveal.js#configuration
             Reveal.initialize({
@@ -1275,7 +1580,8 @@ Company.build {
                 history: true,
                 center: true,
                 slideNumber: true,
-
+                touch: true,
+                mouseWheel: true,
                 transition: "slide", // none/fade/slide/convex/concave/zoom
 
                 // Optional reveal.js plugins
