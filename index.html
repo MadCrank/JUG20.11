@@ -196,6 +196,11 @@ class Foo
                     <aside class="notes"></aside>
                 </section>
                 <section>
+                    <img src="img/groovyLogo.svg">
+                    <h2><a href="http://groovy-lang.org">http://groovy-lang.org</a></h2>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
                     <h2>Ликбез</h2>
                     <h3>Groovy</h3>
                     <ul>
@@ -251,8 +256,8 @@ trait PathSupport
     }
 }
 
-hugeObject.withTraits(PathSupport)
-hugeObject.getByPath(path)
+def object = hugeObject.withTraits(PathSupport)
+object.getByPath(path)
                         </code>
                     </pre>
                     <aside class="notes"></aside>
@@ -274,6 +279,54 @@ use(PathCategory)
 {
     hugeObject.getByPath(path)
 }
+                        </code>
+                    </pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Ликбез</h2>
+                    <h3>AST-трансформации</h3>
+                    <pre style="width:auto;">
+                        <code data-trim class="groovy">
+@Singleton
+class Foo
+{
+    String foo = 'foo'
+}
+
+assert Foo.instance.foo == 'foo'
+                        </code>
+                    </pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Ликбез</h2>
+                    <h3>AST-трансформации</h3>
+                    <pre style="width:auto;">
+                        <code data-trim class="groovy">
+@Singleton
+class Foo
+{
+    String foo = 'foo'
+}
+
+assert Foo.instance.foo == 'foo'
+                        </code>
+                    </pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Ликбез</h2>
+                    <h3>AST-трансформации</h3>
+                    <pre style="width:auto;">
+                        <code data-trim class="groovy">
+@Immutable
+class Foo
+{
+    String foo = 'foo'
+}
+
+new Foo().foo = 'bar'// выбросит ReadOnlyPropertyException
                         </code>
                     </pre>
                     <aside class="notes"></aside>
@@ -609,7 +662,7 @@ Company  company = builder.company(title:'Рога и копыта'){
                         <li class="bad">Свои правила именования</li>
                         <li class="bad">Кастомизировать сложно</li>
                     </ul>
-                    <div class="cartoon fragment"><img src="img/boo.png"/></div>
+                    <div class="cartoon fragment"><img src="img/boo.svg"/></div>
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -640,7 +693,7 @@ protected Object createNode(Object name, Map attributes) {
                         <li class="bad">Да ну нафиг</li>
                         <li class="bad">Да ну нафиг</li>
                     </ul>
-                    <div class="cartoon"><img src="img/boo.png"/></div>
+                    <div class="cartoon"><img src="img/boo.svg"/></div>
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -694,7 +747,7 @@ class MyClass {
   }
 }
 
-def closure = new MyClass().closure
+def closure = new MyClass().outerClosure
 closure()
                     </code></pre>
                     <aside class="notes"></aside>
@@ -722,7 +775,7 @@ arguments.with {a+b}
                 <section>
                     <h2>Базовые возможности Groovy</h2>
                     <h3>Синтаксический сахар</h3>
-                    <pre style="width:auto;"><code data-trim class="groovy medium">
+                    <pre style="width:auto;"><code data-trim class="groovy">
 def builder = new MessageBuilder()
 
 def message = builder.with{
@@ -737,7 +790,7 @@ println message // outputs "Hello, world!"
                 <section>
                     <h2>Базовые возможности Groovy</h2>
                     <h3>Синтаксический сахар</h3>
-                    <pre style="width:auto;"><code data-trim class="groovy medium">
+                    <pre style="width:auto;"><code data-trim class="groovy">
 class Message
 {
     String to
@@ -754,7 +807,7 @@ class Message
                 <section>
                     <h2>Базовые возможности Groovy</h2>
                     <h3>Синтаксический сахар</h3>
-                    <pre style="width:auto;"><code data-trim class="groovy medium">
+                    <pre style="width:auto;"><code data-trim class="groovy">
 class MessageBuilder
 {
     Message message
@@ -782,7 +835,7 @@ class MessageBuilder
                 <section>
                     <h2>Базовые возможности Groovy</h2>
                     <h3>Синтаксический сахар</h3>
-                    <pre style="width:auto;"><code data-trim class="groovy medium">
+                    <pre style="width:auto;"><code data-trim class="groovy">
 def builder = new MessageBuilder()
 
 def message = builder.with{
@@ -932,10 +985,10 @@ class Foo {
   def bar = "bar"
 }
 
-class TestTypeCheck {
+class TypeCheckTest {
   Foo foo
 
-  TestTC() {
+  TypeCheckTest() {
     foo = new Foo()
     foo.metaClass.getBar = { "metaClass bar" }
   }
@@ -951,8 +1004,8 @@ class TestTypeCheck {
   }
 }
 
-assert new TestTC().typed() == "metaClass bar"
-assert new TestTC().compiled() == "bar"
+assert new TypeCheckTest().typed() == "metaClass bar"
+assert new TypeCheckTest().compiled() == "bar"
                     </code></pre>
                     <aside class="notes"></aside>
                 </section>
@@ -1204,8 +1257,8 @@ Company.build {
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Успех</h2>
-                    <img src="img/autoCompleteProblem.png" alt="Успех компиляции">
+                    <h2>Проблема автодополнения</h2>
+                    <img src="img/autoCompleteProblem.png" alt="Проблема автодополнения">
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -1217,6 +1270,121 @@ Company.build {
                         <li>DELEGATE_ONLY</li>
                         <li>TO_SELF</li>
                     </ul>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Стратегии разрешения имен</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+class ClassWithA
+{
+    def a = 1
+    def getA = {
+        return a
+    }
+}
+
+class AnotherClassWithA
+{
+    def a = 2
+}
+
+def closure = new ClassWithA().getA
+closure.delegate = new AnotherClassWithA()
+
+assert closure.resolveStrategy == Closure.OWNER_FIRST
+assert closure() == 1
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Стратегии разрешения имен</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+class ClassWithA
+{
+    def a = 1
+    def getA = {
+        return a
+    }
+}
+
+class AnotherClassWithA
+{
+    def a = 2
+}
+
+def closure = new ClassWithA().getA
+closure.delegate = new AnotherClassWithA()
+closure.resolveStrategy = Closure.DELEGATE_FIRST
+
+assert closure() == 2
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Стратегии разрешения имен</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+class ClassWithA
+{
+    def a = 1
+    def getA = {
+        return a
+    }
+}
+
+class ClassWithB
+{
+    def b = 2
+}
+
+def closure = new ClassWithA().getA
+closure.delegate = new ClassWithB()
+closure.resolveStrategy = Closure.DELEGATE_FIRST
+
+assert closure() == 1
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Стратегии разрешения имен</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+def closure = new ClassWithA().getA
+closure.delegate = new ClassWithB()
+
+closure.resolveStrategy = Closure.DELEGATE_ONLY
+
+Exception exception = null
+
+try
+{
+    closure()
+}
+catch (e)
+{
+    exception = e
+}
+
+assert exception instanceof MissingPropertyException
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Переиспользование объектов</h2>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+Company.build {
+    title 'Рога и копыта'
+    departments {
+        item{
+            title 'Управление'
+            employees{
+                item {
+                    title 'Остап Бендер'
+                }
+            }
+            head ? // тут должен быть Остап
+        }
+    }
+}
+                    </code></pre>
                     <aside class="notes"></aside>
                 </section>
                 <section>
@@ -1289,12 +1457,7 @@ Company.build {
                     title 'Остап Бендер'
                 }
             }
-        }
-        item {
-            title 'Работа с общественностью'
-            employees {
-                item refId('ostap')
-            }
+            head refId('ostap')
         }
     }
 }
