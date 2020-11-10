@@ -65,6 +65,15 @@
                     <aside class="notes"></aside>
                 </section>
                 <section>
+                    <h2 style="color:#BC1200;">Disclaimer</h2>
+                    <p><em>
+                        Доклад основан на реальных событиях. Все, что будет сказано является личным мнением автора.
+                        Автор не несет никакой ответственности за то, что говорит и показывает.
+                        И вообще, автор не уверен в том что говорит
+                    </em></p>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
                     <h2>Введение</h2>
                     <div class="office fragment">
                         <div class="window"></div>
@@ -279,22 +288,6 @@ use(PathCategory)
 {
     hugeObject.getByPath(path)
 }
-                        </code>
-                    </pre>
-                    <aside class="notes"></aside>
-                </section>
-                <section>
-                    <h2>Ликбез</h2>
-                    <h3>AST-трансформации</h3>
-                    <pre style="width:auto;">
-                        <code data-trim class="groovy">
-@Singleton
-class Foo
-{
-    String foo = 'foo'
-}
-
-assert Foo.instance.foo == 'foo'
                         </code>
                     </pre>
                     <aside class="notes"></aside>
@@ -1368,6 +1361,11 @@ assert exception instanceof MissingPropertyException
                     <aside class="notes"></aside>
                 </section>
                 <section>
+                    <h2>Успех</h2>
+                    <img src="img/autoCompleteSuccess.png" alt="Автодополнение работает как надо!">
+                    <aside class="notes"></aside>
+                </section>
+                <section>
                     <h2>Переиспользование объектов</h2>
                     <pre style="width:auto;"><code data-trim class="groovy">
 Company.build {
@@ -1468,14 +1466,115 @@ Company.build {
                     <h2>Связи объектов</h2>
                     <h3>Ссылка на родителя</h3>
                     <pre style="width:auto;"><code data-trim class="groovy">
+class Employee extends Bo
+{
+    Department parent
+}
                     </code></pre>
                     <aside class="notes"></aside>
                 </section>
                 <section>
-                    <h2>Циклы и Collection SDK</h2>
-                    <ul>
-                        <li></li>
-                    </ul>
+                    <h2>Связи объектов</h2>
+                    <h3>Ссылка на родителя</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+Company.build {
+    title 'Рога и копыта'
+    departments {
+        item {
+            title 'Управление'
+            employees {
+                item {
+                    id 'ostap'
+                    title 'Остап Бендер'
+                }
+            }
+            head refId('ostap')
+        }
+    }
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Связи объектов</h2>
+                    <h3>Ссылка на родителя</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+class Employee extends Bo
+{
+    @Parent
+    Department parent
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Связи объектов</h2>
+                    <h3>Ссылка на родителя</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+trait IHasMake&lt;T>
+{
+    Collection&lt;Bo> childs = []
+
+    void addChild(Bo child)
+    {
+        childs << child
+    }
+
+    /* ... */
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Связи объектов</h2>
+                    <h3>Ссылка на родителя</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+def compatibleOwner = config.owner
+IHasMake parentBuilder
+while (compatibleOwner in Closure &&
+        !(compatibleOwner.delegate instance IHasMake)
+)
+{
+    compatibleOwner = compatibleOwner.owner
+}
+if (compatibleOwner in Closure && compatibleOwner.delegate in IHasMake)
+{
+    parentBuilder = (IHasMake) compatibleOwner.delegate
+}
+if (parentBuilder)
+{
+    parentBuilder.addChild(bo)
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                </section>
+                <section>
+                    <h2>Связи объектов</h2>
+                    <h3>Ссылка на родителя</h3>
+                    <pre style="width:auto;"><code data-trim class="groovy">
+if (getFqn(bo) && builder.childs)
+{
+    builder.childs.each {
+        def fields = it.class.declaredFields.findAll { it.isAnnotationPresent(Parent) }
+        fields.each { field ->
+            if (field.type.isAssignableFrom(Collection)
+                    && field.genericType in ParameterizedType
+                    && (((ParameterizedType) field.genericType).actualTypeArguments.find() as Class).isAssignableFrom(bo.class))
+            {
+                if (!it[field.name])
+                {
+                    it[field.name] = []
+                }
+                it[field.name] << bo
+            }
+            else if (field.type.isAssignableFrom(bo.class))
+            {
+                it[field.name] = bo
+            }
+        }
+    }
+}
+                    </code></pre>
                     <aside class="notes"></aside>
                 </section>
                 <section>
